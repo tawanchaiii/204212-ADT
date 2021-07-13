@@ -7,7 +7,7 @@ int n;
 int ii[] = {0,1,0,-1};
 int jj[] = {1,0,-1,0};
 int found = 0;
-void dfs(int a,int b){
+void traverseMaze(int a,int b){
     visit[a][b] = 1;
     if(A[a][b] == 'G') {
         found = 1;
@@ -16,7 +16,7 @@ void dfs(int a,int b){
     for(int k=0;k<4;k++){
         if (a+ii[k] >=1 && a+ii[k] <=n &&  b+jj[k] >=1 && b+jj[k] <=n ) {
             if (A[a+ii[k]][b+jj[k]] != '#' && visit[a+ii[k]][b+jj[k]] == 0){
-                dfs(a+ii[k],b+jj[k]);
+                traverseMaze(a+ii[k],b+jj[k]);
                 if (A[a][b] == ' ' && found ==1) {
                     A[a][b] = '.';
                     return;
@@ -40,7 +40,7 @@ int main(){
     for(int i=1;i<=n;i++){
         for(int j=1;j<=n;j++){
             if (A[i][j] == 'S') {
-                dfs(i,j);
+                traverseMaze(i,j);
                 check = 1;
                 break;
             }
