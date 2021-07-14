@@ -32,7 +32,7 @@ int main(){
                 if (str[i+j] != substr[j]) nub++;
             }
             if (nub <= want){
-                substrfunc(tempsub,str,i,i+4);
+                substrfunc(tempsub,str,i,i+sublen);
                 solve(tempsub,substr);
                 memset(tempsub,0,sizeof(tempsub));
                 i+=sublen;
