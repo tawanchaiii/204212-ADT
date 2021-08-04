@@ -8,11 +8,11 @@ typedef struct node {
 
 typedef node_t stack_t;
 
-node_t* push(node_t* s,int value){
-    node_t* temp = (node_t*)malloc(sizeof(node_t));
+stack_t* push(stack_t* s,int value){
+    stack_t* temp = (stack_t*)malloc(sizeof(stack_t));
     temp->data = value;
     temp->next = NULL;
-    node_t* dummy = s;
+    stack_t* dummy = s;
     if (dummy == NULL) {
         dummy = temp;
     }
@@ -23,27 +23,27 @@ node_t* push(node_t* s,int value){
     return dummy;
 }
 
-void top(node_t* s){
+void top(stack_t* s){
     if(s!=NULL) printf("%d\n",s->data);
     else printf("Stack is empty.\n");
 }
 
-node_t* pop(node_t* s){
+stack_t* pop(stack_t* s){
     if(s!=NULL){
-        node_t* dummy = s->next;
-        node_t* temp = s;
+        stack_t* dummy = s->next;
+        stack_t* temp = s;
         free(s);
         return dummy;
     } 
     return s;
     
 }
-void empty(node_t* s){
+void empty(stack_t* s){
     if (s==NULL) printf("Stack is empty.\n");
     else printf("Stack is not empty.\n");
 }
 
-void size(node_t* s){
+void size(stack_t* s){
     int cnt = 0;
     while(s!=NULL){
         cnt++;
@@ -52,7 +52,7 @@ void size(node_t* s){
     printf("%d\n",cnt);
 }
 int main(void) {
-  node_t *s = NULL;
+  stack_t *s = NULL;
   int      n, i, command, value;
 
   scanf("%d", &n);
