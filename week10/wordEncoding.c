@@ -95,6 +95,8 @@ void delete_2node(heap_t* heap){
     temp->frequency = one->frequency+two->frequency;
     heap->head[heap->last_index] = temp;
     heap->last_index++;
+    for (int i = heap->last_index / 2 - 1; i >= 0; i--)
+        check(heap, i);
 }
 void dfs(node_t* head,char ans[]){
     if (head == NULL)
@@ -105,7 +107,7 @@ void dfs(node_t* head,char ans[]){
     strcat(x,"0"); strcat(y,"1");
     dfs(head->left,x);
     if(head->left==NULL && head->right==NULL)
-        printf("%s %s\n",head->word,ans);
+        printf("%s: %s\n",head->word,ans);
     dfs(head->right,y);
 }
 
@@ -124,7 +126,6 @@ int main(void)
         scanf("%s %d",word,&frequency);
         insert(heap,word,frequency);
     }
-    printf("-------\n");
     while(heap->last_index!=1){
         delete_2node(heap);
     }
